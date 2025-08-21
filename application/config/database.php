@@ -13,10 +13,10 @@ if ($env == 'lokal') {
 }
 
 $active_record = TRUE;
-$db[$koneksi1]['hostname'] = '151.106.119.249'; //156.67.212.23
-$db[$koneksi1]['username'] = 'deelabs_terabyte'; //deelabs_terabyte
-$db[$koneksi1]['password'] = 'bismIll@h'; //bismillahhirrahmanirrahim
-$db[$koneksi1]['database'] = 'deelabs_jka_report_db'; //
+$db[$koneksi1]['hostname'] = '153.92.15.33'; //151.106.119.249
+$db[$koneksi1]['username'] = 'u748118301_terabytee'; //deelabs_terabyte
+$db[$koneksi1]['password'] = 'bismIll@h9922!22'; //bismillahhirrahmanirrahim
+$db[$koneksi1]['database'] = 'u748118301_op_jka_db'; //
 $db[$koneksi1]['dbdriver'] = 'mysqli';
 $db[$koneksi1]['dbprefix'] = '';
 $db[$koneksi1]['pconnect'] = TRUE;
