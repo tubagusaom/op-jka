@@ -19,6 +19,7 @@ Class Jadwal_asesmen_model extends MY_Model {
             'formatter' => 'string',
             'save_formatter' => 'string',
             'width' => 200,
+            'hidden' => true
         ),
         'jadual' => array(
             'label' => 'Jadwal',
@@ -28,7 +29,7 @@ Class Jadwal_asesmen_model extends MY_Model {
             'width' => 450,
         ),
         'tanggal' => array(
-            'label' => 'Start Date',
+            'label' => 'Tanggal',
             'rule' => 'trim|xss_clean',
             'formatter' => 'general_date',
             'save_formatter' => 'date',
@@ -76,6 +77,7 @@ Class Jadwal_asesmen_model extends MY_Model {
             'formatter' => 'string',
             'save_formatter' => 'string',
             'width' => 150,
+            'hidden' => true
         ),
         'kuota_peserta' => array(
             'label' => 'Kuota',
@@ -84,6 +86,7 @@ Class Jadwal_asesmen_model extends MY_Model {
             'save_formatter' => 'string',
             'width' => 80,
             'align' => 'center',
+            'hidden' => true
         ),
         'discount_event' => array(
             'label' => 'Potongan',
@@ -92,6 +95,7 @@ Class Jadwal_asesmen_model extends MY_Model {
             'save_formatter' => 'string',
             'width' => 80,
             'align' => 'center',
+            'hidden' => true
         ),
 
         'id_tuk' => array(
@@ -107,6 +111,7 @@ Class Jadwal_asesmen_model extends MY_Model {
             'formatter' => 'nama_perangkat',
             'save_formatter' => 'string',
             'width' => 150,
+            'hidden' => true
         ),
         'is_kolektif' => array(
             'label' => 'Kolektif?',
@@ -114,7 +119,8 @@ Class Jadwal_asesmen_model extends MY_Model {
             'formatter' => array('N','Y'),
             'save_formatter' => 'string',
             'width' => 100,
-            'align' => 'center'
+            'align' => 'center',
+            'hidden' => true
         ),'status_permohonan_blanko' => array(
             'label' => 'Status <br/>Blanko',
             'rule' => 'trim|xss_clean',

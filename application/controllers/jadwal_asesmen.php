@@ -45,7 +45,7 @@ class Jadwal_asesmen extends MY_Controller {
             $this->jadwal_asesmen_model->limit($row, $offset);
             $order = $this->jadwal_asesmen_model->get_params('_order');
             //$rows = isset($where) ? $this->jadwal_asesmen_model->order_by($order)->get_many_by($where) : $this->jadwal_asesmen_model->order_by($order)->get_all();
-            $rows = $this->jadwal_asesmen_model->set_params($params)->with(array('tuk','nama_perangkat'));
+            $rows = $this->jadwal_asesmen_model->set_params($params)->with(array('tuk'));
             $data['rows'] = $this->jadwal_asesmen_model->get_selected()->data_formatter($rows);
             echo json_encode($data);
         } else {
@@ -77,14 +77,14 @@ class Jadwal_asesmen extends MY_Controller {
                         from $jadual_asesmen
                         WHERE YEAR(tanggal)='$thnuji'")->result();
             $nourutjadwal = count($rows_jadwal_tahun) + 1;
-            if(count($kode_asesor_terpilih) == 0){
-                 echo json_encode(array('msgType' => 'error', 'msgValue' => 'Asesor tidak boleh kosong!'));
-                 die();
+            if(count($kode_asesor_terpilih) == 0){ 
+                echo json_encode(array('msgType' => 'error', 'msgValue' => 'Asesor tidak boleh kosong!'));
+                die();
             }
 
             if(count($kode_skema_terpilih) == 0){
-                 echo json_encode(array('msgType' => 'error', 'msgValue' => 'Skema tidak boleh kosong!'));
-                 die();
+                echo json_encode(array('msgType' => 'error', 'msgValue' => 'Skema tidak boleh kosong!'));
+                die();
             }
 
             $data = $this->jadwal_asesmen_model->set_validation()->validate();

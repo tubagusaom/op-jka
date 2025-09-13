@@ -20,27 +20,180 @@ Class Asesi_model extends MY_Model {
             'formatter' => 'datetime',
             'save_formatter' => 'string',
             'width' => 80,
-            'align' => 'center'
+            'align' => 'center',
+            'hidden' => 'true'
         ),
         'skema_sertifikasi' => array(
-            'label' => 'Skema Sertifikasi',
+            'label' => 'Skema Peralatan',
             'rule' => 'trim|xss_clean',
             'formatter' => 'skema',
             'save_formatter' => 'string',
             'width' => 200,
         ),
         'nama_lengkap' => array(
-            'label' => 'Nama Lengkap asesi',
+            'label' => 'Pemilik',
             'rule' => 'trim|xss_clean',
             'formatter' => 'string',
             'save_formatter' => 'string',
             'width' => 200,        ),
         'no_identitas' => array(
-            'label' => 'Identity Number',
+            'label' => 'Serial Number',
             'rule' => 'trim|xss_clean',
             'formatter' => 'string',
             'save_formatter' => 'string',
             'width' => 170,
+        ),
+        'jadwal_id' => array(
+            'label' => 'Jadwal Inspeksi',
+            'rule' => 'trim|xss_clean',
+            'formatter' => 'jadual',
+            'save_formatter' => 'string',
+            'width' => 170,
+        ),
+        'id_tuk' => array(
+            'label' => 'Tempat Uji',
+            'rule' => 'trim|xss_clean',
+            'formatter' => 'tuk',
+            'save_formatter' => 'string',
+            'width' => 170,
+            'hidden' => 'true'
+        ),
+        'organisasi' => array(
+            'label' => 'Lokasi Digunakan',
+            'rule' => 'trim|xss_clean',
+            'formatter' => 'string',
+            'save_formatter' => 'string',
+            'width' => 210,
+        ),
+        'marketing' => array(
+            'label' => 'Pabrik Mesin',
+            'rule' => 'trim|xss_clean',
+            'formatter' => 'string',
+            'save_formatter' => 'string',
+            'width' => 110,
+        ),
+        'rekomendasi_apl01' => array(
+            'label' => 'Tindak Lanjut',
+            'rule' => '',
+            'formatter' => array('Baru','<label style="color:white;background-color:green;">Disetujui</label>','<label style="color:white;background-color:red;">Ditolak</label>','<label style="color:black;background-color:yellow;">Diperbaiki</label>'),
+            'save_formatter' => 'string',
+            'width' => 80,
+            'align'=>'center'
+        ),
+
+        'model' => array(
+            'label' => 'Number',
+            'rule' => 'trim|xss_clean',
+            'formatter' => 'string',
+            'save_formatter' => 'string',
+            'width' => 170,
+            'hidden' => 'true'
+        ),
+        'kapasitas_max' => array(
+            'label' => 'Number',
+            'rule' => 'trim|xss_clean',
+            'formatter' => 'string',
+            'save_formatter' => 'string',
+            'width' => 170,
+            'hidden' => 'true'
+        ),
+        'panjang_boom' => array(
+            'label' => 'Number',
+            'rule' => 'trim|xss_clean',
+            'formatter' => 'string',
+            'save_formatter' => 'string',
+            'width' => 170,
+            'hidden' => 'true'
+        ),
+        'wire_rope_main' => array(
+            'label' => 'Number',
+            'rule' => 'trim|xss_clean',
+            'formatter' => 'string',
+            'save_formatter' => 'string',
+            'width' => 170,
+            'hidden' => 'true'
+        ),
+        'wire_rope_aux' => array(
+            'label' => 'Number',
+            'rule' => 'trim|xss_clean',
+            'formatter' => 'string',
+            'save_formatter' => 'string',
+            'width' => 170,
+            'hidden' => 'true'
+        ),
+        'tahun_pembuatan' => array(
+            'label' => 'Number',
+            'rule' => 'trim|xss_clean',
+            'formatter' => 'string',
+            'save_formatter' => 'string',
+            'width' => 170,
+            'hidden' => 'true'
+        ),
+        'tahun_digunakan' => array(
+            'label' => 'Number',
+            'rule' => 'trim|xss_clean',
+            'formatter' => 'string',
+            'save_formatter' => 'string',
+            'width' => 170,
+            'hidden' => 'true'
+        ),
+        'model_mesin' => array(
+            'label' => 'Number',
+            'rule' => 'trim|xss_clean',
+            'formatter' => 'string',
+            'save_formatter' => 'string',
+            'width' => 170,
+            'hidden' => 'true'
+        ),
+        'no_mesin' => array(
+            'label' => 'Number',
+            'rule' => 'trim|xss_clean',
+            'formatter' => 'string',
+            'save_formatter' => 'string',
+            'width' => 170,
+            'hidden' => 'true'
+        ),
+        'putaran_mesin' => array(
+            'label' => 'Number',
+            'rule' => 'trim|xss_clean',
+            'formatter' => 'string',
+            'save_formatter' => 'string',
+            'width' => 170,
+            'hidden' => 'true'
+        ),
+        'hook_utama' => array(
+            'label' => 'Number',
+            'rule' => 'trim|xss_clean',
+            'formatter' => 'string',
+            'save_formatter' => 'string',
+            'width' => 170,
+            'hidden' => 'true'
+        ),
+        'hook_bantu' => array(
+            'label' => 'Number',
+            'rule' => 'trim|xss_clean',
+            'formatter' => 'string',
+            'save_formatter' => 'string',
+            'width' => 170,
+            'hidden' => 'true'
+        ),
+        'referensi' => array(
+            'label' => 'Number',
+            'rule' => 'trim|xss_clean',
+            'formatter' => 'string',
+            'save_formatter' => 'string',
+            'width' => 170,
+            'hidden' => 'true'
+        ),
+
+
+
+        'pra_asesmen_checked' => array(
+            'label' => 'Checked',
+            'rule' => 'trim|xss_clean',
+            'formatter' => 'nama_user',
+            'save_formatter' => 'string',
+            'width' => 150,
             'hidden' => 'true'
         ),
         'no_uji_kompetensi' => array(
@@ -75,7 +228,6 @@ Class Asesi_model extends MY_Model {
             'save_formatter' => 'string',
             'width' => 60,
             'hidden' => 'true'
-
         ),
         'telp' => array(
             'label' => 'Telp',
@@ -99,14 +251,6 @@ Class Asesi_model extends MY_Model {
             'formatter' => 'string',
             'save_formatter' => 'string',
             'hidden' => 'true',
-
-        ),
-        'jadwal_id' => array(
-            'label' => 'Jadwal Asesmen',
-            'rule' => 'trim|xss_clean',
-            'formatter' => 'jadual',
-            'save_formatter' => 'string',
-            'width' => 170,
         ),
         'tuk_usulan' => array(
             'label' => 'TUK Pilihan ',
@@ -116,14 +260,6 @@ Class Asesi_model extends MY_Model {
             'width' => 150,
             'hidden' => 'true',
         ),
-        'id_tuk' => array(
-            'label' => 'TUK Jadwal',
-            'rule' => 'trim|xss_clean',
-            'formatter' => 'tuk',
-            'save_formatter' => 'string',
-            'width' => 170,
-
-        ),
         'file_bukti_pendukung' => array(
             'label' => 'Bukti Pendukung ',
             'rule' => 'trim|xss_clean',
@@ -131,30 +267,6 @@ Class Asesi_model extends MY_Model {
             'save_formatter' => 'string',
             'width' => 210,
             'hidden' => 'true',
-        ),
-        'organisasi' => array(
-            'label' => 'Lembaga/Organisasi ',
-            'rule' => 'trim|xss_clean',
-            'formatter' => 'string',
-            'save_formatter' => 'string',
-            'width' => 210,
-
-        ),
-        'marketing' => array(
-            'label' => 'Pendaftar',
-            'rule' => 'trim|xss_clean',
-            'formatter' => array('umum_pskk'=>'umum_pskk','mahasiswa_pskk'=>'mahasiswa_pskk','umum'=>'umum'),
-            'save_formatter' => 'string',
-            'width' => 110,
-
-        ),
-        'pra_asesmen_checked' => array(
-            'label' => 'Checked Pra Asesmen',
-            'rule' => 'trim|xss_clean',
-            'formatter' => 'nama_user',
-            'save_formatter' => 'string',
-            'width' => 150,
-
         ),
         'is_perpanjangan' => array(
             'label' => '*',
@@ -204,15 +316,6 @@ Class Asesi_model extends MY_Model {
             'save_formatter' => 'string',
             'width' => 210,
             'hidden' => 'true',
-        ),
-        'rekomendasi_apl01' => array(
-            'label' => 'Rekomendasi',
-            'rule' => '',
-            'formatter' => array('Baru','<label style="color:white;background-color:green;">Disetujui</label>','<label style="color:white;background-color:red;">Ditolak</label>','<label style="color:black;background-color:yellow;">Diperbaiki</label>'),
-            'save_formatter' => 'string',
-            'width' => 80,
-            'align'=>'center'
-
         ),
         'catatan_rekomendasi_apl01' => array(
             'label' => 'catatan_rekomendasi_apl01',

@@ -81,50 +81,62 @@ class Asesi extends MY_Controller {
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $data = $this->asesi_model->set_validation()->validate();
             if ($data !== false) {
-                $nama_lengkap = $this->input->post('nama_lengkap');
-                $email = $this->input->post('email');
-                $hp = $this->input->post('telp');
-                $nama = str_replace(' ', '', strtolower($nama_lengkap));
-                if (strlen($nama) > 4) {
-                    $datax['akun'] = substr($nama, 0, 4) . rand(1, 9999);
+
+                if ($this->asesi_model->check_unique($data)) {
+                    if ($this->asesi_model->insert($data) !== false) {
+
+                        // $nama_lengkap = $this->input->post('nama_lengkap');
+                        // $email = $this->input->post('email');
+                        // $hp = $this->input->post('telp');
+                        // $nama = str_replace(' ', '', strtolower($nama_lengkap));
+                        // if (strlen($nama) > 4) {
+                        //     $datax['akun'] = substr($nama, 0, 4) . rand(1, 9999);
+                        // } else {
+                        //     $datax['akun'] = $nama . rand(1, 9999);
+                        // }
+
+                        // $datax['email'] = 'terabytee.net@gmail.com';
+                        // $datax['hp'] = '085737744383';
+                        // $datax['nama_user'] = $nama_lengkap;
+                        // $datax['jenis_user'] = '1';
+                        // //$datax['sandi'] = '123456';
+                        // $datax['sandi_asli'] = '123456';
+                        // $datax['aktif'] = '1';
+                        // $datax['pegawai_id'] = $id;
+
+                        // $no_identitas = $this->input->post('no_identitas');
+                        // $organisasi = $this->input->post('organisasi');
+                        // $tempat_lahir = $this->input->post('tempat_lahir');
+                        // $tgl_lahir = $this->input->post('hidden_tanggaL_lahir');
+                        // $jenis_kelamin = $this->input->post('jenis_kelamin');
+                        // $alamat = $this->input->post('alamat');
+
+                        // $datax['no_identitas'] = $no_identitas;
+                        // $datax['organisasi'] = $organisasi;
+                        // $datax['tempat_lahir'] = $tempat_lahir;
+                        // $datax['tgl_lahir'] = $tgl_lahir;
+                        // $datax['jenis_kelamin'] = $jenis_kelamin;
+                        // $datax['alamat'] = $alamat;
+                        // $datax['id_asesi'] = $id;
+
+                        // $this->db->insert('t_users', $datax);
+                        // //$this->load->model('User_Model');
+                        // //$this->User_Model->insert($datax);
+                        // $user_id = $this->db->insert_id();
+
+                        // $datay['user_id'] = $user_id;
+                        // $datay['role_id'] = 17;
+                        // $this->load->model('User_Role_Model');
+                        // $this->User_Role_Model->insert($datay);
+
+                        echo json_encode(array('msgType' => 'success', 'msgValue' => 'Data berhasil disimpan !'));
+                    } else {
+                        echo json_encode(array('msgType' => 'error', 'msgValue' => 'Data tidak dapat disimpan !'));
+                    }
                 } else {
-                    $datax['akun'] = $nama . rand(1, 9999);
+                    echo json_encode(array('msgType' => 'error', 'msgValue' => implode("<br/>", $this->maping_skema_model->get_validation())));
                 }
 
-
-                $datax['email'] = $email;
-                $datax['hp'] = $hp;
-                $datax['nama_user'] = $nama_lengkap;
-                $datax['jenis_user'] = '1';
-                //$datax['sandi'] = '123456';
-                $datax['sandi_asli'] = '123456';
-                $datax['aktif'] = '1';
-                $datax['pegawai_id'] = $id;
-
-                $no_identitas = $this->input->post('no_identitas');
-                $organisasi = $this->input->post('organisasi');
-                $tempat_lahir = $this->input->post('tempat_lahir');
-                $tgl_lahir = $this->input->post('hidden_tanggaL_lahir');
-                $jenis_kelamin = $this->input->post('jenis_kelamin');
-                $alamat = $this->input->post('alamat');
-
-                $datax['no_identitas'] = $no_identitas;
-                $datax['organisasi'] = $organisasi;
-                $datax['tempat_lahir'] = $tempat_lahir;
-                $datax['tgl_lahir'] = $tgl_lahir;
-                $datax['jenis_kelamin'] = $jenis_kelamin;
-                $datax['alamat'] = $alamat;
-                $datax['id_asesi'] = $id;
-
-                $this->db->insert('t_users', $datax);
-                //$this->load->model('User_Model');
-                //$this->User_Model->insert($datax);
-                $user_id = $this->db->insert_id();
-
-                $datay['user_id'] = $user_id;
-                $datay['role_id'] = 17;
-                $this->load->model('User_Role_Model');
-                $this->User_Role_Model->insert($datay);
             } else {
                 echo json_encode(array('msgType' => 'error', 'msgValue' => validation_errors()));
             }
@@ -132,7 +144,16 @@ class Asesi extends MY_Controller {
             $this->load->library('combogrid');
             $users = $this->combogrid->set_properties(array('model' => 'User_Model', 'controller' => 'users', 'fields' => array('nama_user', 'email'), 'options' => array('id' => 'user_id', 'pagination', 'rownumber', 'idField' => 'id', 'textField' => 'nama_user', 'panelWidth' => 400)))->load_model()->set_grid();
 
-            echo json_encode(array('msgType' => 'success', 'msgValue' => $this->load->view('asesi/add', array('pra_asesmen' => array('-Pilih-', 'Lanjut', 'Tidak Lanjut'), 'pra_asesmen_checked' => $users), TRUE)));
+            $skema = $this->combogrid->set_properties(array('value' => $asesi->skema_sertifikasi, 'model' => 'skema_model', 'controller' => 'skema', 'fields' => array('skema'), 'options' => array('id' => 'skema_sertifikasi', 'pagination', 'rownumber', 'idField' => 'id', 'textField' => 'skema', 'panelWidth' => 500,
+                'queryParams' => array('name' => 'easui')
+            )))->load_model()->set_grid();
+
+            $jadwal_grid = $this->combogrid->set_properties(array('model' => 'jadwal_asesmen_model', 'controller' => 'jadwal_asesmen', 'fields' => array('jadual', 'tanggal'), 'options' => array('id' => 'jadwal_id', 'pagination', 'rownumber', 'idField' => 'id', 'textField' => 'jadual', 'panelWidth' => 500)))->load_model()->set_grid();
+
+            // echo json_encode(array('msgType' => 'success', 'msgValue' => $this->load->view('asesi/add', array('pra_asesmen' => array('-Pilih-', 'Lanjut', 'Tidak Lanjut'), 'pra_asesmen_checked' => $users, 'skema_sertifikasi' => $skema), TRUE)));
+
+            $view = $this->load->view('asesi/add', array('pendaftar'=>$pendaftar,'query_asesor'=>$query_asesor, 'isbn' => $isbn,'asesor' => $asesor,'tuk' => $tuk, 'skema_grid' => $skema, 'files_asesi' => $files_asesi, 'data_aplikasi' => $data_aplikasi, 'skema' => $skema, 'jadwal_grid' => $jadwal_grid , 'data' => $this->asesi_model->get_single($asesi), 'pra_asesmen_grid' => $users, 'pra_asesmen' => array('-Pilih-', 'Lanjut', 'Tidak Lanjut'), 'jenis_kelamin' => array('-Pilih-', 'Pria', 'Wanita'), 'nama_asesor' => $nama_asesor, 'array_opsi_apl01' => $array_opsi_apl01, 'array_catatan_apl01' => $array_catatan_apl01, 'foto' => $foto), TRUE);
+                echo json_encode(array('msgType' => 'success', 'msgValue' => $view));
         }
     }
     function asesor_pra($id){

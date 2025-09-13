@@ -53,7 +53,7 @@
                             <div class="x-window-body" style="height: 300px; width: 464px; padding:0; background-position: center bottom">
                                 <div class="form-intro">
                                     <div class="form-intro-container">
-                                        <div class="form-intro-label" style="text-align: center"><?= $aplikasi->singkatan_unit ?></div>
+                                        <div class="form-intro-label" style="text-align: center"><?= $aplikasi->nama_unit ?></div>
                                         <div class="form-intro-outersep">
                                             <div class="form-intro-sepx"> </div>
                                         </div>

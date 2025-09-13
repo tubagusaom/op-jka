@@ -2,68 +2,68 @@
     <div class="x-panel-bwrap">
         <form id="myform">
 
-            <div style="background-color: #00355c;color: #fff;font-weight: bold;padding: 10px;width: 96%; border-radius: 5px">Detail jadwal Uji</div>
+            <div style="background-color: #00355c;color: #fff;font-weight: bold;padding: 10px;width: 96%; border-radius: 5px">Detail jadwal Inspeksi</div>
             <div class="x-panel-bwrap">
               <table style="margin-bottom: 10px;border: 2px solid #95B8E7;width: 95.98%; border-radius: 0 0 5px 5px;" class="table-data">
-                <tr>
+                <!-- <tr>
                      <td style="width: 200px; float: left">Kode Jadwal</td>
                      <td style="width: 5px">:</td>
                      <td>
                          <input id="kode_jadwal" name="kode_jadwal" style="width: 250px;" class="easyui-textbox" data-options="required: true">
                      </td>
-                 </tr>
+                 </tr> -->
                  <tr>
-                      <td style="width: 200px; float: left">Jadwal Uji Kompetensi</td>
+                      <td style="width: 200px; float: left">Jadwal Inspeksi</td>
                       <td style="width: 5px">:</td>
                       <td>
                           <input id="jadual" name="jadual" style="width: 250px;" class="easyui-textbox" data-options="required: true">
                       </td>
                   </tr>
-                  <tr>
+                  <!-- <tr>
                       <td style="width: 200px; float: left">Uji Kolektif</td>
                       <td style="width: 5px">:</td>
                       <td>
                           <?php echo form_dropdown('is_kolektif', array('N','Y'), '', 'id="is_kolektif" style="width: 250px;" class="easyui-combobox"  data-options="required: true"'); ?>
                       </td>
-                  </tr>
+                  </tr> -->
                  <tr>
-                      <td style="width: 200px; float: left">Tempat Uji Kompetensi</td>
+                      <td style="width: 200px; float: left">Tempat Uji Inspeksi</td>
                       <td style="width: 5px">:</td>
                       <td>
                           <input id="id_tuk" name="id_tuk" style="width: 250px;" class="easyui-textbox" data-options="required: true">
                       </td>
                   </tr>
                   <tr>
-                      <td style="width: 200px; float: left">Tanggal & Jam Mulai</td>
+                      <td style="width: 200px; float: left">Tanggal</td>
                       <td style="width: 5px">:</td>
                       <td>
-                          <input id="tanggal" name="tanggal" style="width: 122px;" class="easyui-datebox" data-options="">
-                          <input id="starttime" name="starttime" class="easyui-timespinner" label="Start Time:" labelPosition="top" value="00:00" style="width:122px;">
+                          <input id="tanggal" name="tanggal" style="width: 250px;" class="easyui-datebox" data-options="">
+                          <!-- <input id="starttime" name="starttime" class="easyui-timespinner" label="Start Time:" labelPosition="top" value="00:00" style="width:122px;"> -->
                       </td>
                   </tr>
-                  <tr>
+                  <!-- <tr>
                       <td style="width: 200px; float: left">Tanggal & Jam Akhir</td>
                       <td style="width: 5px">:</td>
                       <td>
                           <input id="tanggal_akhir" name="tanggal_akhir" style="width: 122px;" class="easyui-datebox" data-options="">
                           <input id="endtime" name="endtime" class="easyui-timespinner" value="00:00" style="width:122px;">
                       </td>
-                  </tr>
-                  <tr>
+                  </tr> -->
+                  <!-- <tr>
                       <td style="width: 200px; float: left">Jumlah Asesi</td>
                       <td style="width: 5px">:</td>
                       <td>
                           <input id="kuota_peserta" name="kuota_peserta" style="width: 250px;" class="easyui-textbox" data-options="required: true">
                       </td>
-                  </tr>
-                  <tr>
+                  </tr> -->
+                  <!-- <tr>
                       <td style="width: 200px; float: left">Potongan Biaya Asesmen</td>
                       <td style="width: 5px">:</td>
                       <td>
                           <input id="discount_event" name="discount_event" style="width: 250px;" class="easyui-numberbox" data-options="required: true" >
                       </td>
-                  </tr>
-                  <tr>
+                  </tr> -->
+                  <!-- <tr>
                       <td style="width: 200px; float: left">Persyaratan / Notifikasi Peserta</td>
                       <td style="width: 5px">:</td>
                       <td>
@@ -76,17 +76,17 @@
                       <td>
                           <input id="panitia" name="panitia" style="width: 250px;" class="easyui-textbox" data-options="" placeholder="Jika lebih dari satu orang pisahkan dengan (,)">
                       </td>
-                  </tr>
+                  </tr> -->
 
               </table>
               <hr style="width: 88%; color: #95B8E7;" />
             </div>
 
-            <div style="background-color: #00355c;color: #fff;font-weight: bold;padding: 10px;width: 96%; border-radius: 5px 5px 0 0">Pilih Skema dan Asesor yang akan di ujikan dan ditugaskan untuk melaksanakan Asesmen!</div>
+            <div style="background-color: #00355c;color: #fff;font-weight: bold;padding: 10px;width: 96%; border-radius: 5px 5px 0 0">Pilih Skema dan Inspektor yang akan di ujikan dan ditugaskan</div>
             <div class="x-panel-bwrap">
                 <table style="margin-bottom: 10px;border: 2px solid #95B8E7;width: 95.98%; border-radius: 0 0 5px 5px;" class="table-data">
                     <tr>
-                        <td style="width: 140px;">Skema Sertifikasi : </td>
+                        <td style="width: 140px;">Skema Inspeksi : </td>
                         <td>
                             <input id="id_skema" name="id_skema" style="width: 250px;" class="easyui-textbox">
                             <!-- <a style="margin:5px;" href="#" id="tbl_pilihan_skema"> PILIH </a> -->
@@ -101,7 +101,7 @@
                             <table class="table-data" style="width:92.9%;font-size: 11px;border-collapse: collapse;margin-left: 0px; border-color: #95B8E7;" border="1" cellpadding="5" cellspacing="5" id="table_skema_dipilih">
                                 <tr style="background-color: whitesmoke;">
                                     <th style="text-align: center; border-color: #95B8E7;">No.</th>
-                                    <th style="border-color: #95B8E7;">Skema Sertifikasi</th>
+                                    <th style="border-color: #95B8E7;">Skema Inspeksi</th>
                                     <th style="text-align: center; border-color: #95B8E7;">Hapus</th>
                                 </tr>
                             </table>
@@ -111,23 +111,23 @@
 
                 <table style="margin-bottom: 10px;border: 2px solid #95B8E7;width: 96%; border-radius: 5px; " class="table-data">
                    <tr>
-                    <td style="width: 140px;">Asesor Kompetensi : </td>
+                    <td style="width: 140px;">Inspektor : </td>
                     <td>
                         <input id="id_asesor" name="id_asesor" style="width: 250px;" class="easyui-textbox">
                         <!-- <a style="margin:5px;" href="#" id="tbl_pilihan_asesor"> PILIH </a> -->
                         <a id="tbl_pilihan_asesor" href="#" class="easyui-linkbutton" data-options="iconCls:'icon-ok'">
-                            Pilih Asesor
+                            Pilih Inspektor
                         </a>
                     </td>
                     </tr>
                     <tr>
-                        <td style="width: 140px;">Asesor Yang Dipilih : </td>
+                        <td style="width: 140px;">Inspektor Yang Dipilih : </td>
                         <td>
                             <table class="table-data" style="width:92.9%;font-size: 11px;border-collapse: collapse;margin-left: 0px; border-color: #95B8E7;" border="1" cellpadding="5" cellspacing="5" id="table_asesor_dipilih">
 
                             <tr style="background-color: whitesmoke;">
                                 <th style="text-align: center; border-color: #95B8E7;">No.</th>
-                                <th style="border-color: #95B8E7;">Asesor Kompetensi</th>
+                                <th style="border-color: #95B8E7;">Inspektor</th>
                                 <th style="text-align: center; border-color: #95B8E7;">Hapus</th></tr>
                             </table>
 

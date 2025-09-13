@@ -3,90 +3,136 @@
         <form id="myform">
             <table class="table-data">
                 <tr>
-                    <td style="width: 140px;">Code Instruktur : </td>
+                    <td style="width: 200px;">Skema Peralatan : </td>
                     <td>
-                        <input id="instruktur_code" name="instruktur_code" style="width: 250px;" class="easyui-textbox" data-options="required: true">
+                        <!-- <input id="instruktur_code" name="instruktur_code" style="width: 250px;" class="easyui-textbox" data-options="required: true"> -->
+                        <input id="skema_sertifikasi" name="skema_sertifikasi" style="width: 250px;"  value="<?php echo $data->skema_sertifikasi; ?>">
+                        <input type="hidden" id="rekomendasi_apl01" name="rekomendasi_apl01" value="0">
                     </td>
                 </tr>
                 <tr>
-                    <td style="width: 140px;">NIK : </td>
+                    <td style="width: 200px;">Jadwal Inspeksi : </td>
                     <td>
-                        <input id="nik" name="nik" style="width: 250px;" class="easyui-textbox" >
+                        <input id="jadwal_id" name="jadwal_id" style="width: 250px;" value="<?php echo $data->jadwal_grid; ?>">
                     </td>
                 </tr>
                 <tr>
-                    <td style="width: 100px;">Nama Instruktur : </td>
+                    <td style="width: 200px;">Nama Pemilik : </td>
                     <td>
-                        <input id="instruktur_name" name="instruktur_name" style="width: 250px;" class="easyui-textbox" data-options="required: true">
-                    </td>
-                </tr>
-                 <tr>
-                    <td style="width: 100px;">Base Location : </td>
-                    <td>
-                        <?php echo form_dropdown('base', $base, '', 'id="base" class="easyui-combobox"  data-options="required: true"'); ?>
+                        <input id="nama_lengkap" name="nama_lengkap" style="width: 250px;" class="easyui-textbox" >
                     </td>
                 </tr>
                 <tr>
-                    <td style="width: 100px;">No Lisence : </td>
+                    <td style="width: 200px;">Serial Number : </td>
                     <td>
-                        <input id="no_lisensi" name="no_lisensi" style="width: 250px;" class="easyui-textbox" >
+                        <input id="no_identitas" name="no_identitas" style="width: 250px;" class="easyui-textbox" data-options="required: true">
                     </td>
                 </tr>
                 <tr>
-                    <td style="width: 100px;">Flight Hours : </td>
+                    <td style="width: 200px;">Model : </td>
                     <td>
-                        <input id="jam_terbang" name="jam_terbang" style="width: 250px;" class="easyui-textbox">
+                        <input id="model" name="model" style="width: 250px;" class="easyui-textbox" >
                     </td>
                 </tr>
                 <tr>
-                    <td style="width: 100px;">End of License : </td>
+                    <td style="width: 200px;">Kapasitas Max : </td>
                     <td>
-                        <input id="awal_kontrak" name="awal_kontrak" style="width: 250px;" class="easyui-datebox" data-options="required: true">
+                        <input id="kapasitas_max" name="kapasitas_max" style="width: 250px;" class="easyui-textbox">
                     </td>
                 </tr>
                 <tr>
-                    <td style="width: 100px;">End of Contract : </td>
+                    <td style="width: 200px;">Panjang Boom Terpasang : </td>
                     <td>
-                        <input id="habis_kontrak" name="habis_kontrak" style="width: 250px;" class="easyui-datebox" data-options="required: true">
+                        <input id="panjang_boom" name="panjang_boom" style="width: 250px;" class="easyui-textbox">
                     </td>
                 </tr>
                 <tr>
-                    <td style="width: 100px;">Alamat : </td>
+                    <td style="width: 200px;">wire_rope_main : </td>
                     <td>
-                        <textarea id="alamat" name="alamat" style="width: 250px;" class="easyui-textbox" ></textarea>
+                        <input id="wire_rope_main" name="wire_rope_main" style="width: 250px;" class="easyui-textbox" >
                     </td>
                 </tr>
                 <tr>
-                    <td style="width: 100px;">Telepon : </td>
+                    <td style="width: 200px;">wire_rope_aux : </td>
                     <td>
-                        <input id="telepon" name="telepon" style="width: 250px;" class="easyui-textbox" >
+                        <input id="wire_rope_aux" name="wire_rope_aux" style="width: 250px;" class="easyui-textbox" >
                     </td>
                 </tr>
                 <tr>
-                    <td style="width: 100px;">Email : </td>
+                    <td style="width: 200px;">Pabrik Pembuatan : </td>
                     <td>
-                        <input id="email" name="email" style="width: 250px;" class="easyui-textbox" >
+                        <input id="marketing" name="marketing" style="width: 250px;" class="easyui-textbox" >
+                    </td>
+                </tr>
+
+                <tr>
+                    <td style="width: 200px;">Tahun Pembuatan : </td>
+                    <td>
+                        <input id="tahun_pembuatan" name="tahun_pembuatan" style="width: 250px;" class="easyui-textbox">
                     </td>
                 </tr>
                 <tr>
-                    <td style="width: 100px;">Status : </td>
+                    <td style="width: 200px;">Tahun Digunakan : </td>
                     <td>
-                        <input id="status" name="status" style="width: 250px;" class="easyui-textbox" >
+                        <input id="tahun_digunakan" name="tahun_digunakan" style="width: 250px;" class="easyui-textbox">
                     </td>
                 </tr>
                 <tr>
-                    <td style="width: 100px;">Description : </td>
+                    <td style="width: 200px;">Model Mesin : </td>
                     <td>
-                        <input id="description" name="description" style="width: 250px;" class="easyui-textbox">
+                        <input id="model_mesin" name="model_mesin" style="width: 250px;" class="easyui-textbox">
                     </td>
                 </tr>
+                <tr>
+                    <td style="width: 200px;">No Mesin : </td>
+                    <td>
+                        <input id="no_mesin" name="no_mesin" style="width: 250px;" class="easyui-textbox">
+                    </td>
+                </tr>
+                <tr>
+                    <td style="width: 200px;">Putaran Mesin : </td>
+                    <td>
+                        <input id="putaran_mesin" name="putaran_mesin" style="width: 250px;" class="easyui-textbox">
+                    </td>
+                </tr>
+                <tr>
+                    <td style="width: 200px;">Hook Utama : </td>
+                    <td>
+                        <input id="hook_utama" name="hook_utama" style="width: 250px;" class="easyui-textbox">
+                    </td>
+                </tr>
+                <tr>
+                    <td style="width: 200px;">Hook Bantu : </td>
+                    <td>
+                        <input id="hook_Bantu" name="hook_Bantu" style="width: 250px;" class="easyui-textbox">
+                    </td>
+                </tr>
+                <tr>
+                    <td style="width: 200px;">Lokasi Digunakan : </td>
+                    <td>
+                        <input id="organisasi" name="organisasi" style="width: 250px;" class="easyui-textbox">
+                    </td>
+                </tr>
+                <tr>
+                    <td style="width: 200px;">Referensi : </td>
+                    <td>
+                        <input id="referensi" name="referensi" style="width: 250px;" class="easyui-textbox">
+                    </td>
+                </tr>
+
             </table>
         </form>
     </div>
 </div>
+
 <script type="text/javascript">
+
 <?php
+
 echo $pra_asesmen_grid;
+echo $skema_grid;
+echo $jadwal_grid;
 
 ?>
+
 </script>

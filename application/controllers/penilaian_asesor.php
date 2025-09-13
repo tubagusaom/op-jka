@@ -41,7 +41,7 @@ class Penilaian_asesor extends MY_Controller {
                 $asesi_id = $this->auth->get_user_data()->id;
                 $where[kode_lsp() . 'asesi.id_users ='] = $asesi_id;
             }
-            $where['pra_asesmen ='] = '1';
+            // $where['pra_asesmen ='] = '1';
             if(isset($_POST['nama_lengkap']) && !empty($_POST['nama_lengkap']))
             {
                 $where['nama_lengkap like'] = '%' . $this->input->post('nama_lengkap') . '%';
