@@ -777,15 +777,15 @@ class Berita_acara extends MY_Controller {
     }else {
     $view = $this->load->view('berita_acara/cetak_ba', $data, true);
     if ($type == "pdf" && $option == 'download') {
-      //$this->load->library("htm12pdf");
-      //$this->htm12pdf->pdf_create($view, "pb-" . $id . ".pdf", false, true);
-      $this->pdf = new HTML2PDF('P','A4','en');
-      $this->pdf->WriteHTML($view);
-      $this->pdf->Output('/var/www/_tera_byte/assets/files/permohonan_blanko/'.'surat_beritaacara_'. implode('_', $array_jadwal_id).'.pdf','F');
-      }else{
-      $this->load->library("htm12pdf");
-      $this->htm12pdf->pdf_create($view, "pb-" . $id . ".pdf", false, true);
-      }
+            //$this->load->library("htm12pdf");
+            //$this->htm12pdf->pdf_create($view, "pb-" . $id . ".pdf", false, true);
+            $this->pdf = new HTML2PDF('P','A4','en');
+            $this->pdf->WriteHTML($view);
+            $this->pdf->Output('/var/www/_tera_byte/assets/files/permohonan_blanko/'.'surat_beritaacara_'. implode('_', $array_jadwal_id).'.pdf','F');
+        }else{
+            $this->load->library("htm12pdf");
+            $this->htm12pdf->pdf_create($view, "pb-" . $id . ".pdf", false, true);
+        }
     }
 
   }

@@ -2,22 +2,22 @@
 <page backtop="50mm" backbottom="10mm" backleft="15mm" backright="15mm">
     <page_header>
         <div>
-            <img src="<?php echo FCPATH.'assets/img/kop_atas.jpg';?>" width="750" height="149" />
+            <!-- <img src="<?php echo FCPATH.'assets/img/kop_atas.jpg';?>" width="750" height="149" /> -->
         </div>
         <br />
     </page_header>
     <page_footer>
     </page_footer>
     <h4 style="font-size: 15px;text-align: center; margin-top: -45px;">
-    BERITA ACARA ASESMEN / UJI KOMPETENSI <BR> PELAKSANAAN SERTIFIKASI TAHUN <?= substr($info_jadwal[$value]->tanggal, 0, 4)?><BR>
+    BERITA ACARA <BR> PEMERIKSAAN TEKNIS DAN PENGUJIAN BEBAN<BR>
     <?=$aplikasi->nama_unit?>
     </h4>
     <div style="font-size: 12px; text-align: justify;">
     Pada hari ini <?= getday($info_jadwal[$value]->tanggal_akhir,'-') ?> tanggal <?php echo terbilang(date('d', strtotime($info_jadwal[$value]->tanggal_akhir))) ?> Bulan <?php echo getBulan(substr($info_jadwal[$value]->tanggal_akhir, 5, 2)) ?> Tahun <?= substr($info_jadwal[$value]->tanggal, 0, 4)?>, bertempat di
-    <?= $info_jadwal[$value]->tuk ?>; <?= $info_jadwal[$value]->alamat ?> telah dilakukan Uji Kompetensi <font style="color: #012e4f"><?= $skema_uji[$value]->skema.' ('.$info_jadwal[$value]->jadual ?>)</font> yang diikuti sebanyak
+    <?= $info_jadwal[$value]->tuk ?>; <?= $info_jadwal[$value]->alamat ?> telah dilakukan Uji <font style="color: #012e4f"><?= $skema_uji[$value]->skema.' ('.$info_jadwal[$value]->jadual ?>)</font> yang diikuti sebanyak
 <font style="color: #012e4f"><?= count($asesi_ba[$value]); ?> peserta</font> dengan penjelasan sebagai berikut:    </div>
     <p style="text-indent: 0.3in;font-size: 12px">
-        Asesor :
+        iNSPEKTOR :
     </p>
     <table style="width: 100%; border-collapse: collapse;" border="0">
         <?php
@@ -36,14 +36,13 @@
         ?>
     </table>
     <p style="font-size: 12px">
-Berdasarkan hasil penilaian Asesor, dengan ini menetapkan hasil uji kompetensi unit kompetensi
-terhadap peserta sebagai berikut :
+Berdasarkan hasil penilaian inspektor, dengan ini menetapkan hasil uji sebagai berikut :
     </p>
     <table border="1" style="border-collapse: collapse;">
         <thead style="font-size: 12px">
             <tr>
                 <th style="width: 5%; font-weight: bold; padding: 2px;" align="center">No. </th>
-        <th style="width: 35%; font-weight: bold; padding: 2px;" align="center">Nama Asesi </th>
+        <th style="width: 35%; font-weight: bold; padding: 2px;" align="center">Nama Client </th>
         <th style="width: 35%; font-weight: bold; padding: 2px;" align="center">Organisasi </th>
         <th style="width: 25%; font-weight: bold; padding: 2px;" align="center">Hasil (Kompeten / Belum Kompeten) </th>
        </tr>
@@ -71,7 +70,7 @@ Asesor <?=$aplikasi->nama_unit?>
             <td style="width: 30%; text-align: left;">Jakarta, <?= tgl_indo($info_jadwal[$value]->tanggal_akhir) ?></td>
         </tr>
         <tr>
-            <td style="width: 40%; text-align: left;">Asesor Kompetensi</td>
+            <td style="width: 40%; text-align: left;">Inspektor Kompetensi</td>
             <td style="width: 30%;"></td>
         </tr>
         <?php
