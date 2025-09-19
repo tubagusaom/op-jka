@@ -98,11 +98,11 @@ class St_asesor_kompetensi extends MY_Controller {
         $data['aplikasi'] = $this->db->get('r_konfigurasi_aplikasi')->row();
         $data['jadual_asesmen'] = $row;
         $tahun = explode('-', $row->created_when);
-        $data['no_st'] = $no_jadwal . '/ST/LSP-itk_/' . $bulan_romawi . '/' . $tahun_st;
+        $data['no_st'] = 'JKA-Dir/SKP/' . $no_jadwal . '/' . $bulan_romawi . '/' . $tahun_st;
         $data['tanggal_st'] = tgl_indo($row->created_when);
 
 
-        $data['qr_ketua_lsp'] = " Ketua " . $data['aplikasi']->singkatan_unit . " " . $data['aplikasi']->ketua . "\r\n\n\n" . $data['aplikasi']->url_aplikasi;
+        $data['qr_ketua_lsp'] = " Direktur PT. " . $data['aplikasi']->nama_unit . " " . $data['aplikasi']->ketua . "\r\n\n\n" . $data['aplikasi']->url_aplikasi;
 
         //var_dump($data['qr_ketua_lsp']);die();
 
@@ -119,7 +119,7 @@ class St_asesor_kompetensi extends MY_Controller {
             $data_asesi[$key] = $this->db->get(kode_lsp().'asesi')->result();
         }
         $data['data_asesi'] = $data_asesi;
-        //var_dump($data['asesor_kompetensi']);die();
+        // var_dump($data['asesor_kompetensi']);die();
         //var_dump($skema);die();
         //$this->load->model('asesi_model');
         //$data['unit'] = $this->asesi_model->data_unit_kompetensi($data['sertifikat']->skema_sertifikasi);
