@@ -67,23 +67,23 @@
             </div>
 
             <div title="2. REKAMAN PEMERIKSAAN FISIK" data-options="selected:true" style="padding:10px;background:whitesmoke;">
-              <?php $this->load->view('rencana_asesmen/2_persiapan') ?>
+              <?php $this->load->view('rencana_asesmen/rekam_uji_2') ?>
             </div>
 
             <div title="3. REKAMAN PEMERIKSAAN DIMENSI" data-options="selected:true" style="padding:10px;background:whitesmoke;">
-              <?php $this->load->view('rencana_asesmen/3_rencana') ?>
+              <?php $this->load->view('rencana_asesmen/rekam_uji_3') ?>
             </div>
             <div title="4. REKAMAN UJI FUNGSI" data-options="selected:true" style="padding:10px;background:whitesmoke;">
-              REKAMAN UJI FUNGSI
+              <?php $this->load->view('rencana_asesmen/rekam_uji_4') ?>
             </div>
             <div title="5. REKAMAN UJI BEBAN" data-options="selected:true" style="padding:10px;background:whitesmoke;">
-              REKAMAN UJI BEBAN
+              <?php $this->load->view('rencana_asesmen/rekam_uji_5') ?>
             </div>
             <div title="6. REKAMAN SETELAH UJI BEBAN" data-options="selected:true" style="padding:10px;background:whitesmoke;">
-              REKAMAN SETELAH UJI BEBAN
+              <?php $this->load->view('rencana_asesmen/rekam_uji_6') ?>
             </div>
             <div title="6. REKAMAN KETIDAKSESUAIAN" data-options="selected:true" style="padding:10px;background:whitesmoke;">
-              REKAMAN KETIDAKSESUAIAN
+              <?php $this->load->view('rencana_asesmen/rekam_uji_7') ?>
             </div>
 
             <!-- </div> -->
