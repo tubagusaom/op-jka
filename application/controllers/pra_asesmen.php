@@ -740,7 +740,8 @@ class Pra_asesmen extends MY_Controller {
               $this->htm12pdf->pdf_create($view, "data_asesi" . date('YmdHis') . ".pdf", false, true);
           }
       }
-      function instrumen_asesmen($id = false) {
+
+      function instrumen_asesmenx($id = false) {
         if (!$id) {
             data_not_found();
             exit;
@@ -791,6 +792,7 @@ class Pra_asesmen extends MY_Controller {
             }
         }
     }
+
     function cetak_mapa02($id,$type = "pdf") {
         $this->load->model('asesi_model');
         $data['aplikasi'] = $this->db->get('r_konfigurasi_aplikasi')->row();
@@ -1451,6 +1453,58 @@ function rencana_asesmen($id = false) {
                     TRUE
                 );
                 echo json_encode(array('msgType' => 'success', 'msgValue' => $view));
+            } else {
+                echo json_encode(array('msgType' => 'error', 'msgValue' => 'Data tidak dapat ditemukan !'));
+            }
+        }
+    }
+
+    function instrumen_asesmen($id = false) {
+        if (!$id) {
+            data_not_found();
+            exit;
+        }
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            $data = $this->rencana_asesmen_model->set_validation()->validate();
+            $id_asesi = $_POST['id'];
+            // var_dump($id_asesi); die();
+            if ($data !== false) {
+                if ($this->rencana_asesmen_model->check_unique($data, intval($id_asesi))) {
+                    if ($this->rencana_asesmen_model->update(intval($id_asesi), $data) !== false) {
+                        echo json_encode(array('msgType' => 'success', 'msgValue' => 'Data berhasil disimpan !'));
+                    } else {
+                        echo json_encode(array('msgType' => 'error', 'msgValue' => 'Data tidak dapat disimpan !'));
+                    }
+                } else {
+                    echo json_encode(array('msgType' => 'error', 'msgValue' => implode("<br/>", $this->rencana_asesmen_model->get_validation())));
+                }
+            } else {
+                echo json_encode(array('msgType' => 'error', 'msgValue' => validation_errors()));
+            }
+        } else {
+            $asesi = $this->pra_asesmen_model->get(intval($id));
+            // var_dump($asesi); die();
+
+            if (sizeof($asesi) == 1) {
+
+              $asesi_uji = $this->pra_asesmen_model->asesi_detail_uji($id);
+
+              if (sizeof($asesi_uji) == 0) {
+                echo json_encode(array('msgType' => 'warning', 'msgValue' => 'REKAM UJI BELUM SELESAI'));
+              }else {
+                  $data = $this->pra_asesmen_model->get_single($asesi_uji);
+
+                    $view = $this->load->view(
+                      'rencana_asesmen/instrumen_asesmen',
+                        array(
+                          'data' => $asesi_uji,
+                          'data_asesi' => $asesi,
+                        ),
+                        TRUE
+                    );
+                    echo json_encode(array('msgType' => 'success', 'msgValue' => $view));
+              }
+
             } else {
                 echo json_encode(array('msgType' => 'error', 'msgValue' => 'Data tidak dapat ditemukan !'));
             }

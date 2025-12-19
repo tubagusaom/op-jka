@@ -7,7 +7,7 @@
       <form id="myform">
 
         <div class="easyui-accordion" style="width:98%;height:383px;">
-            <div title="FR-MAPA-02" data-options="
+            <div title="RINGKASAN HASIL PEMERIKSAAN" data-options="
                 collapsed:false,
                 collapsible:false,
                 tools:'#divbtn'
@@ -16,8 +16,8 @@
               <h3 style="padding:0 0 4px 4px;margin:4px"><?=$data_asesi->nama_lengkap ?></h3>
             </div>
 
-            <div title="Peta instrumen Asesmen" data-options="selected:true" style="padding:10px;background:whitesmoke;">
-            <?php $this->load->view('rencana_asesmen/mapa02') ?>
+            <div title="EXECUTIVE SUMMARY" data-options="selected:true" style="padding:10px;background:whitesmoke;">
+            <?php $this->load->view('rencana_asesmen/executive_summary') ?>
             </div>
 
             <div id="divbtn" style="right: -111px!important;">
