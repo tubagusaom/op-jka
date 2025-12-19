@@ -14,7 +14,7 @@ class Penilaian_asesor extends MY_Controller {
     function index() {
         if ($_SERVER['REQUEST_METHOD'] == 'GET') {
             $this->load->library('grid');
-            $grid = $this->grid->set_properties(array('model' => 'penilaian_asesor_model', 'controller' => 'penilaian_asesor', 'options' => array('id' => 'penilaian_asesor', 'pagination', 'rows_number')))->load_model()->set_grid();
+            $grid = $this->grid->set_properties(array('model' => 'penilaian_asesor_model', 'controller' => 'penilaian_asesor', 'options' => array('id' => 'penilaian_asesor', 'pagination', 'rownumber')))->load_model()->set_grid();
             $view = $this->load->view('penilaian_asesor/index', array('grid' => $grid), true);
             echo json_encode(array('msgType' => 'success', 'msgValue' => $view));
         } else {

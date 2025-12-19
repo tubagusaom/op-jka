@@ -19,7 +19,7 @@ class Pra_asesmen extends MY_Controller {
     function index() {
         if ($_SERVER['REQUEST_METHOD'] == 'GET') {
             $this->load->library('grid');
-            $grid = $this->grid->set_properties(array('model' => 'pra_asesmen_model', 'controller' => 'pra_asesmen','datepra' => 'pra_asesmen_date', 'options' => array('id' => 'pra_asesmen', 'pagination', 'rows_number')))->load_model()->set_grid();
+            $grid = $this->grid->set_properties(array('model' => 'pra_asesmen_model', 'controller' => 'pra_asesmen','datepra' => 'pra_asesmen_date', 'options' => array('id' => 'pra_asesmen', 'pagination', 'rownumber')))->load_model()->set_grid();
             $view = $this->load->view('pra_asesmen/index', array('grid' => $grid), true);
             echo json_encode(array('msgType' => 'success', 'msgValue' => $view));
         } else {
@@ -301,7 +301,7 @@ class Pra_asesmen extends MY_Controller {
             }
         }
     }
-    function rencana_asesmen($id = false) {
+    function rencana_asesmen_x($id = false) {
         if (!$id) {
             data_not_found();
             exit;
@@ -535,6 +535,7 @@ class Pra_asesmen extends MY_Controller {
             }
         }
     }
+
     function cetak_mapa01($id,$type = "pdf") {
 
         // error_reporting(E_ALL);
@@ -1193,6 +1194,269 @@ class Pra_asesmen extends MY_Controller {
         //'.//$detail_elemen.'
         return $elemen_kuk;
     }
+
+
+function rencana_asesmen($id = false) {
+        if (!$id) {
+            data_not_found();
+            exit;
+        }
+
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            $data = $this->pra_asesmen_model->set_validation()->validate();
+            if ($data !== false) {
+                if ($this->pra_asesmen_model->check_unique($data, intval($id))) {
+                    $validitas_dokumen_pra_asesmen = $_POST['validitas_dokumen_pra_asesmen'];
+                    $data['validitas_dokumen_pra_asesmen'] =serialize($validitas_dokumen_pra_asesmen);
+                    $data['perangkat_yang_digunakan'] = isset($_POST['perangkat_yang_digunakan']) ? serialize($_POST['perangkat_yang_digunakan']) : '';
+
+
+                    if ($this->pra_asesmen_model->update(intval($id), $data) !== false) {
+
+                        $t_asesi_uji = kode_lsp().'asesi_uji';
+                        $this->db->where('id_asesi', $id);
+                        $get_asesi_uji = $this->db->get(kode_lsp() . 'asesi_uji')->row();
+                      // var_dump(count($get_asesi_uji)); die();
+                        $totalau = count($get_asesi_uji);
+
+                    if ($totalau == '0') {
+
+                            // data pendekatan
+                            $data_au['is_perpanjangan'] = $_POST['is_perpanjangan'];
+                            $data_au['is_kandidat'] = $_POST['is_kandidat'];
+                            $data_au['rating1'] = $_POST['rating1'];
+                            $data_au['rating2'] = $_POST['rating2'];
+                            $data_au['rating3'] = $_POST['rating3'];
+                            $data_au['is_lingkungan'] = $_POST['is_lingkungan'];
+                            $data_au['is_peluang_bukti'] = $_POST['is_peluang_bukti'];
+                            $data_au['is_hubungan_kompetensi'] = $_POST['is_hubungan_kompetensi'];
+                            $data_au['is_lembaga'] = $_POST['is_lembaga'];
+                            $data_au['is_relevan_asesor'] = $_POST['is_relevan_asesor'];
+                            $data_au['is_tolak_ukur'] = $_POST['is_tolak_ukur'];
+
+                            // data persiapan
+                            $array_jenis_bukti_l = $_POST['l'];
+                            $array_jenis_bukti_tl = $_POST['tl'];
+                            $array_jenis_bukti_t = $_POST['t'];
+                            $array_metode_cl = $_POST['cl'];
+                            $array_metode_dit = $_POST['dit'];
+                            $array_metode_pw = $_POST['pw'];
+                            $array_metode_vp = $_POST['vp'];
+                            $array_metode_cup = $_POST['cup'];
+                            $array_metode_lainnya = $_POST['lainnya'];
+
+                            $data_au['id_asesi'] = $id;
+                            $data_au['array_jenis_bukti_l'] = serialize($array_jenis_bukti_l);
+                            $data_au['array_jenis_bukti_tl'] = serialize($array_jenis_bukti_tl);
+                            $data_au['array_jenis_bukti_t'] = serialize($array_jenis_bukti_t);
+                            $data_au['array_metode_cl'] = serialize($array_metode_cl);
+                            $data_au['array_metode_dit'] = serialize($array_metode_dit);
+                            $data_au['array_metode_pw'] = serialize($array_metode_pw);
+                            $data_au['array_metode_vp'] = serialize($array_metode_vp);
+                            $data_au['array_metode_cup'] = serialize($array_metode_cup);
+                            $data_au['array_metode_lainnya'] = serialize($array_metode_lainnya);
+
+                            // data rencana
+                            $array_karakter     = $_POST['karakter'];
+                            $array_kebutuhan    = $_POST['kebutuhan'];
+                            $array_saran        = $_POST['saran'];
+                            $array_penyesuaian  = $_POST['penyesuaian'];
+                            $array_peluang      = $_POST['peluang'];
+                            $is_konfirmasi         = $_POST['is_konfirmasi'];
+
+                            $data_au['array_karakter'] = serialize($array_karakter);
+                            $data_au['array_kebutuhan'] = serialize($array_kebutuhan);
+                            $data_au['array_saran'] = serialize($array_saran);
+                            $data_au['array_penyesuaian'] = serialize($array_penyesuaian);
+                            $data_au['array_peluang'] = serialize($array_peluang);
+                            $data_au['is_konfirmasi'] = $is_konfirmasi;
+
+                            // data rekam uji 1
+                            $array_mdr_av       = $_POST['mdr_av'];
+                            $array_mdr_vr       = $_POST['mdr_vr'];
+                            $array_od_av        = $_POST['od_av'];
+                            $array_od_vr        = $_POST['od_vr'];
+                            $array_tpd_av       = $_POST['tpd_av'];
+                            $array_tpd_vr       = $_POST['tpd_vr'];
+
+                            $data_au['array_mdr_av'] = serialize($array_mdr_av);
+                            $data_au['array_mdr_vr'] = serialize($array_mdr_vr);
+                            $data_au['array_od_av'] = serialize($array_od_av);
+                            $data_au['array_od_vr'] = serialize($array_od_vr);
+                            $data_au['array_tpd_av'] = serialize($array_tpd_av);
+                            $data_au['array_tpd_vr'] = serialize($array_tpd_vr);
+
+                        // var_dump($data_au); die();
+
+                        if ($this->db->insert($t_asesi_uji, $data_au)) {
+                            echo json_encode(array('msgType' => 'success', 'msgValue' => 'Data FR-REKAM-UJI berhasil disimpan !'));
+                        }else {
+                            echo json_encode(array('msgType' => 'error', 'msgValue' => 'Data FR-REKAM-UJI tidak dapat disimpan !'));
+                        }
+
+                    }else{
+
+                        $data_asesi_uji = array(
+                            // data pendekatan
+                            // 'is_perpanjangan' => $_POST['is_perpanjangan'],
+                            // 'is_kandidat' => $_POST['is_kandidat'],
+                            // 'rating1' => $_POST['rating1'],
+                            // 'rating2' => $_POST['rating2'],
+                            // 'rating3' => $_POST['rating3'],
+                            // 'is_lingkungan' => $_POST['is_lingkungan'],
+                            // 'is_peluang_bukti' => $_POST['is_peluang_bukti'],
+                            // 'is_hubungan_kompetensi' => $_POST['is_hubungan_kompetensi'],
+                            // 'is_lembaga' => $_POST['is_lembaga'],
+                            // 'is_relevan_asesor' => $_POST['is_relevan_asesor'],
+                            // 'is_tolak_ukur' => $_POST['is_tolak_ukur'],
+
+                            // data rekam uji 1
+                            'array_mdr_av' => serialize($_POST['mdr_av']),
+                            'array_mdr_vr' => serialize($_POST['mdr_vr']),
+                            'array_od_av' => serialize($_POST['od_av']),
+                            'array_od_vr' => serialize($_POST['od_vr']),
+                            'array_tpd_av' => serialize($_POST['tpd_av']),
+                            'array_tpd_vr' => serialize($_POST['tpd_vr']),
+
+                            // data persiapan
+                            'array_jenis_bukti_l' => serialize($_POST['l']),
+                            'array_jenis_bukti_tl' => serialize($_POST['tl']),
+                            'array_jenis_bukti_t' => serialize($_POST['t']),
+                            'array_metode_cl' => serialize($_POST['cl']),
+                            'array_metode_dit' => serialize($_POST['dit']),
+                            'array_metode_pw' => serialize($_POST['pw']),
+                            'array_metode_vp' => serialize($_POST['vp']),
+                            'array_metode_cup' => serialize($_POST['cup']),
+                            'array_metode_lainnya' => serialize($_POST['lainnya']),
+
+                            // data rencana
+                            'array_karakter' => serialize($_POST['karakter']),
+                            'array_kebutuhan' => serialize($_POST['kebutuhan']),
+                            'array_saran' => serialize($_POST['saran']),
+                            'array_penyesuaian' => serialize($_POST['penyesuaian']),
+                            'array_peluang' => serialize($_POST['peluang']),
+                            'is_konfirmasi' => $_POST['is_konfirmasi']
+                        );
+
+                        // var_dump($data_asesi_uji); die();
+
+                        $this->db->where('id_asesi', $id);
+                        // $updatedata = $this->db->update(kode_lsp() . 'asesi_uji', $data_asesi_uji);
+                        if ($this->db->update($t_asesi_uji, $data_asesi_uji)) {
+                            echo json_encode(array('msgType' => 'success', 'msgValue' => 'Data FR-REKAM-UJI berhasil disimpan !'));
+                        }else {
+                            echo json_encode(array('msgType' => 'error', 'msgValue' => 'Data FR-REKAM-UJI tidak dapat disimpan !'));
+                        }
+
+                    }
+
+                      // var_dump($data_au); die();
+
+
+                    } else {
+                        echo json_encode(array('msgType' => 'error', 'msgValue' => 'Data FR-REKAM-UJI tidak dapat disimpan !'));
+                    }
+                } else {
+                    echo json_encode(array('msgType' => 'error', 'msgValue' => implode("<br/>", $this->pra_asesmen_model->get_validation())));
+                }
+            } else {
+                echo json_encode(array('msgType' => 'error', 'msgValue' => validation_errors()));
+            }
+        } else {
+            $asesi = $this->pra_asesmen_model->get(intval($id));
+            if (sizeof($asesi) == 1) {
+
+            $data   = $this->pra_asesmen_model->get_single($asesi);
+            $asesi_detail  = $this->pra_asesmen_model->asesi($id);
+            $unit_kompetensi = $this->asesi_model->data_unit_kompetensi($asesi->skema_sertifikasi);
+
+            $data_perangkat = $this->pra_asesmen_model->perangkat_uji($asesi->perangkat_yang_digunakan);
+            foreach ($data_perangkat as $key => $value) {
+                $perangkat[]= $value;
+            }
+
+            $this->db->where('pegawai_id',$id);
+            $this->db->where('jenis_user','1');
+            $row = $this->db->get('t_users')->row();
+            $files_asesi = $this->asesi_model->files_asesi($row->id);
+
+
+            $idperangkat = unserialize($asesi->perangkat_yang_digunakan);
+            $validitas_dokumen_pra_asesmen=unserialize($asesi->validitas_dokumen_pra_asesmen);
+            $data_uji = $this->pra_asesmen_model->asesi_detail_uji($id);
+            //   var_dump($id); die();
+
+            $array_jenis_bukti_l = unserialize($data_uji->array_jenis_bukti_l);
+            $array_jenis_bukti_tl = unserialize($data_uji->array_jenis_bukti_tl);
+            $array_jenis_bukti_t = unserialize($data_uji->array_jenis_bukti_t);
+
+            $array_metode_cl = unserialize($data_uji->array_metode_cl);
+            $array_metode_dit = unserialize($data_uji->array_metode_dit);
+            $array_metode_pw = unserialize($data_uji->array_metode_pw);
+            $array_metode_vp = unserialize($data_uji->array_metode_vp);
+            $array_metode_cup = unserialize($data_uji->array_metode_cup);
+            $array_metode_lainnya = unserialize($data_uji->array_metode_lainnya);
+
+            $array_karakter = unserialize($data_uji->array_karakter);
+            $array_kebutuhan = unserialize($data_uji->array_kebutuhan);
+            $array_saran = unserialize($data_uji->array_saran);
+            $array_penyesuaian = unserialize($data_uji->array_penyesuaian);
+            $array_peluang = unserialize($data_uji->array_peluang);
+
+            $array_mdr_av = unserialize($data_uji->array_mdr_av);
+            $array_mdr_vr = unserialize($data_uji->array_mdr_vr);
+            $array_od_av = unserialize($data_uji->array_od_av);
+            $array_od_vr = unserialize($data_uji->array_od_vr);
+            $array_tpd_av = unserialize($data_uji->array_tpd_av);
+            $array_tpd_vr = unserialize($data_uji->array_tpd_vr);
+
+              // var_dump($datauji['array_karakter']); die();
+
+            $view = $this->load->view(
+                'rencana_asesmen/rencana_asesmen',
+                    array(
+                    'data' => $data,
+                    'asesi' => $asesi_detail,
+                    'data_perangkat' => $perangkat,
+                    'idperangkat' => $idperangkat,
+                    'validitas_dokumen_pra_asesmen' => $validitas_dokumen_pra_asesmen,
+                    'files_asesi' => $files_asesi,
+                    'data_uji' => $data_uji,
+                    'array_jenis_bukti_l' => $array_jenis_bukti_l,
+                    'array_jenis_bukti_tl' => $array_jenis_bukti_tl,
+                    'array_jenis_bukti_t' => $array_jenis_bukti_t,
+
+                    'array_metode_cl' => $array_metode_cl,
+                    'array_metode_dit' => $array_metode_dit,
+                    'array_metode_pw' => $array_metode_pw,
+                    'array_metode_vp' => $array_metode_vp,
+                    'array_metode_cup' => $array_metode_cup,
+                    'array_metode_lainnya' => $array_metode_lainnya,
+
+                    'array_karakter' => $array_karakter,
+                    'array_kebutuhan' => $array_kebutuhan,
+                    'array_saran' => $array_saran,
+                    'array_penyesuaian' => $array_penyesuaian,
+                    'array_peluang' => $array_peluang,
+
+                    'array_mdr_av' => $array_mdr_av,
+                    'array_mdr_vr' => $array_mdr_vr,
+                    'array_od_av' => $array_od_av,
+                    'array_od_vr' => $array_od_vr,
+                    'array_tpd_av' => $array_tpd_av,
+                    'array_tpd_vr' => $array_tpd_vr,
+
+                    'unit_kompetensi' =>$unit_kompetensi
+                    ),
+                    TRUE
+                );
+                echo json_encode(array('msgType' => 'success', 'msgValue' => $view));
+            } else {
+                echo json_encode(array('msgType' => 'error', 'msgValue' => 'Data tidak dapat ditemukan !'));
+            }
+        }
+    }
+
 
     function search() {
         if ($_SERVER['REQUEST_METHOD'] == 'GET') {

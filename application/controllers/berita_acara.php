@@ -13,7 +13,7 @@ class Berita_acara extends MY_Controller {
     function index() {
         if ($_SERVER['REQUEST_METHOD'] == 'GET') {
             $this->load->library('grid');
-            $grid = $this->grid->set_properties(array('model' => 'berita_acara_model', 'controller' => 'berita_acara', 'options' => array('id' => 'berita_acara', 'pagination', 'rows_number')))->load_model()->set_grid();
+            $grid = $this->grid->set_properties(array('model' => 'berita_acara_model', 'controller' => 'berita_acara', 'options' => array('id' => 'berita_acara', 'pagination', 'rownumber')))->load_model()->set_grid();
             $view = $this->load->view('berita_acara/index', array('grid' => $grid), true);
             echo json_encode(array('msgType' => 'success', 'msgValue' => $view));
         } else {

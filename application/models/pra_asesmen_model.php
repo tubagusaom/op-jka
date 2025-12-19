@@ -11,7 +11,7 @@ Class Pra_asesmen_model extends MY_Model {
     }
 
     protected $_table;
-    protected $table_label = 'Data Praasesmen UJK';
+    protected $table_label = 'Data Praasesmen';
     protected $_columns = array(
         'u_date_create' => array(
             'label' => 'Registration Date',

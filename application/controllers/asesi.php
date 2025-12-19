@@ -156,6 +156,7 @@ class Asesi extends MY_Controller {
                 echo json_encode(array('msgType' => 'success', 'msgValue' => $view));
         }
     }
+    
     function asesor_pra($id){
         $this->db->where('jenis_user','2');
         $this->db->where('pegawai_id',$id);

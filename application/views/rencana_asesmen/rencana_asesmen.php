@@ -24,7 +24,7 @@
         <input type="hidden" id="jadwal_id" name="jadwal_id" value="<?php echo $data->jadwal_id ?>">
 
         <div class="easyui-accordion" style="width:98%;height:483px;">
-            <div title="FR-MAPA-01" data-options="
+            <div title="FR-REKAM-UJI" data-options="
                 collapsed:false,
                 collapsible:false,
                 tools:'#divbtn'
@@ -32,8 +32,8 @@
 
               <table width="100%" style="padding:4px 0 4px 4px;">
                 <tr>
-                  <td>Asesi :</td>
-                  <td>Skema :</td>
+                  <td>Owner :</td>
+                  <td>Equipment :</td>
                   <td colspan="6" width="23%">Perangkat Uji :</td>
                 </tr>
 
@@ -62,16 +62,28 @@
 
             <!-- <div id="divpanel" class="easyui-accordion" style="display:block!important"> -->
 
-            <div title="1. Pendekatan Asesmen" data-options="selected:true" style="padding:10px;background:whitesmoke;">
-              <?php $this->load->view('rencana_asesmen/1_pendekatan') ?>
+            <div title="1. PENELAAHAN DOKUMEN" data-options="selected:true" style="padding:10px;background:whitesmoke;">
+              <?php $this->load->view('rencana_asesmen/rekam_uji_1') ?>
             </div>
 
-            <div title="2. Persiapan Asesmen" data-options="selected:true" style="padding:10px;background:whitesmoke;">
+            <div title="2. REKAMAN PEMERIKSAAN FISIK" data-options="selected:true" style="padding:10px;background:whitesmoke;">
               <?php $this->load->view('rencana_asesmen/2_persiapan') ?>
             </div>
 
-            <div title="3. Rencana Asesmen" data-options="selected:true" style="padding:10px;background:whitesmoke;">
+            <div title="3. REKAMAN PEMERIKSAAN DIMENSI" data-options="selected:true" style="padding:10px;background:whitesmoke;">
               <?php $this->load->view('rencana_asesmen/3_rencana') ?>
+            </div>
+            <div title="4. REKAMAN UJI FUNGSI" data-options="selected:true" style="padding:10px;background:whitesmoke;">
+              REKAMAN UJI FUNGSI
+            </div>
+            <div title="5. REKAMAN UJI BEBAN" data-options="selected:true" style="padding:10px;background:whitesmoke;">
+              REKAMAN UJI BEBAN
+            </div>
+            <div title="6. REKAMAN SETELAH UJI BEBAN" data-options="selected:true" style="padding:10px;background:whitesmoke;">
+              REKAMAN SETELAH UJI BEBAN
+            </div>
+            <div title="6. REKAMAN KETIDAKSESUAIAN" data-options="selected:true" style="padding:10px;background:whitesmoke;">
+              REKAMAN KETIDAKSESUAIAN
             </div>
 
             <!-- </div> -->

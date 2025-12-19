@@ -27,7 +27,9 @@ class St_asesor_kompetensi extends MY_Controller {
             $data = array();
             $jenis_user = $this->auth->get_user_data()->jenis_user;
 
-            if ($jenis_user == 2) {
+            // var_dump($jenis_user); die();
+
+            if ($jenis_user == 22) {
                 $nama_asesor = $this->auth->get_user_data()->nama_user;
                 //var_dump($nama_asesor);die();
                 //$where['nama_asesor'] = $nama_asesor;
