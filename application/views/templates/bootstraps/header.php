@@ -3,7 +3,7 @@
 
 <head>
 
-    <title><?= $aplikasi->nama_unit ?></title>
+    <title><?= $aplikasi->singkatan_unit . ' | ' . $aplikasi->nama_unit ?></title>
 
     <!-- Favicon -->
     <link rel="shortcut icon" href="<?= base_url() ?>assets/img/jka_icon.png" type="image/x-icon" />
@@ -18,52 +18,12 @@
     <meta charset="utf-8" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="robots" content="index, follow" />
-    <meta http-equiv="Copyright" content="tera_bytee" />
-    <meta name="author" content="tera_bytee" />
-    <meta http-equiv="imagetoolbar" content="no" />
-    <meta name="language" content="Indonesia" />
-    <meta name="revisit-after" content="7" />
-    <meta name="webcrawlers" content="all" />
-    <meta name="rating" content="general" />
-    <meta name="spiders" content="all" />
 
-    <!-- Social Media Meta -->
-    <meta property="place:location:latitude" content="13.062616" /> <!-- Silahkan disesuaikan -->
-    <meta property="place:location:longitude" content="80.229508" /> <!-- Silahkan disesuaikan -->
-    <meta property="business:contact_data:street_address" content="Jl. Intelektual" /> <!-- Silahkan disesuaikan -->
-    <meta property="business:contact_data:locality" content="DKI JAKARTA" /> <!-- Silahkan disesuaikan -->
-    <meta property="business:contact_data:postal_code" content="13720" /> <!-- Silahkan disesuaikan -->
-    <meta property="business:contact_data:country_name" content="Indonesia" /> <!-- Silahkan disesuaikan -->
-    <meta property="business:contact_data:email" content="info@it-konsultan.com" /> <!-- Silahkan disesuaikan -->
-    <meta property="business:contact_data:phone_number" content="085737744383" /> <!-- Silahkan disesuaikan -->
-    <meta property="business:contact_data:website" content="https://it.konsultan.com" />
+    <meta name="description" content="<?= $aplikasi->singkatan_unit . ' | ' . $aplikasi->nama_unit ?>" />
 
-    <meta property="og:type" content="article" /> <!-- Card type bisa di ganti article, website, blog dan profile -->
-    <meta property="profile:first_name" content="Tera" /> <!-- Silahkan disesuaikan -->
-    <meta property="profile:last_name" content="Byte" /> <!-- Silahkan disesuaikan -->
-    <meta property="profile:username" content="Facebook_Username" /> <!-- Silahkan disesuaikan -->
-    <meta property="og:title" content="<?= $aplikasi->nama_unit . ' | ' . $aplikasi->singkatan_unit ?>" />
-    <meta property="og:description" content="<?= $aplikasi->nama_unit ?>" />
-    <meta property="og:image" content="<?= base_url('favicon.ico') ?>" />
-    <meta property="og:url" content="https://it.konsultan.com/" />
-    <meta property="og:site_name" content="<?= $aplikasi->singkatan_unit ?>" />
-    <meta property="fb:admins" content="Facebook_ID" /> <!-- Silahkan disesuaikan -->
-
-    <meta name="twitter:card" content="summary" /> <!-- Card type jangan di ganti -->
-    <meta name="twitter:site" content="<?= $aplikasi->singkatan_unit ?>" />
-    <meta name="twitter:title" content="<?= $aplikasi->nama_unit . ' | ' . $aplikasi->singkatan_unit ?>" />
-    <meta name="twitter:description" content="<?= $aplikasi->nama_unit ?>" />
-    <meta name="twitter:creator" content="Twitter_Username" /> <!-- Silahkan disesuaikan -->
-    <meta name="twitter:image:src" content="<?= base_url('favicon.ico') ?>" />
-    <meta name="twitter:domain" content="https://it.konsultan.com/" />
-
-    <meta name="description" content="<?= $aplikasi->nama_unit . ' | ' . $aplikasi->singkatan_unit ?>" />
-    <meta name="keywords" content="<?= $aplikasi->nama_unit ?>, <?= $aplikasi->singkatan_unit ?>" />
-
-    <meta itemprop="name" content="<?= $aplikasi->nama_unit . ' | ' . $aplikasi->singkatan_unit ?>" />
+    <meta itemprop="name" content="<?= $aplikasi->singkatan_unit . ' | ' . $aplikasi->nama_unit ?>" />
     <meta itemprop="description" content="<?= $aplikasi->nama_unit ?>" />
-    <meta itemprop="image" content="<?= base_url('favicon.ico') ?>" />
+    <meta itemprop="image" content="<?= base_url() ?>assets/img/jka_icon.png" />
 
     <!-- <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css"> -->
     <link rel="stylesheet" href="<?php echo base_url() ?>assets/css/bootstraps/font-awesome.min.css" type="text/css" />
