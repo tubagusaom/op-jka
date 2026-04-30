@@ -88,18 +88,22 @@ class Asesor extends MY_Controller {
                     $data['is_users'] = '1';
                     $insert_database = $this->asesor_model->insert($data);
                     if ($insert_database !== false) {
-                        $nama = str_replace(' ', '', strtolower($this->input->post('users')));
-                        if (strlen($nama) > 4) {
-                            $akun = 'asesor' . substr($nama, 0, 4) . rand(1, 99);
-                        } else {
-                            $akun = 'asesor' . $nama . rand(1, 9999);
-                        }
+                        // $nama = str_replace(' ', '', strtolower($this->input->post('users')));
+                        // if (strlen($nama) > 4) {
+                        //     $akun = 'asesor' . substr($nama, 0, 4) . rand(1, 99);
+                        // } else {
+                        //     $akun = 'asesor' . $nama . rand(1, 9999);
+                        // }
+
+                        $email = $this->input->post('email');
+                        $akun  = $email;
+
                         $data_user = array(
                             'akun' => $akun,
-                            'email' => $this->input->post('email'),
+                            'email' => $email,
                             'hp' => $this->input->post('hp'),
                             'nama_user' => $this->input->post('users'),
-                            'jenis_user' => '2',
+                            'jenis_user' => '22',
                             'sandi' => '123456',
                             'sandi_asli' => '123456',
                             'aktif' => '1',
@@ -111,7 +115,7 @@ class Asesor extends MY_Controller {
                         $user_id = $this->db->insert_id();
 
                         $datay['user_id'] = $user_id;
-                        $datay['role_id'] = 16;
+                        $datay['role_id'] = 7;
                         $this->load->model('User_Role_Model');
                         $this->User_Role_Model->insert($datay);
 
@@ -166,18 +170,22 @@ class Asesor extends MY_Controller {
                     $data['is_users'] = '1';
                     if ($this->asesor_model->update(intval($id), $data) !== false) {
                         if ($is_users == '0') {
-                            $nama = str_replace(' ', '', strtolower($this->input->post('users')));
-                            if (strlen($nama) > 4) {
-                                $akun = 'asesor' . substr($nama, 0, 4) . rand(1, 99);
-                            } else {
-                                $akun = 'asesor' . $nama . rand(1, 99);
-                            }
+                            // $nama = str_replace(' ', '', strtolower($this->input->post('users')));
+                            // if (strlen($nama) > 4) {
+                            //     $akun = 'asesor' . substr($nama, 0, 4) . rand(1, 99);
+                            // } else {
+                            //     $akun = 'asesor' . $nama . rand(1, 99);
+                            // }
+
+                            $email = $this->input->post('email');
+                            $akun  = $email;
+
                             $data_user = array(
                                 'akun' => $akun,
-                                'email' => $this->input->post('email'),
+                                'email' => $email,
                                 'hp' => $this->input->post('hp'),
                                 'nama_user' => $this->input->post('users'),
-                                'jenis_user' => '2',
+                                'jenis_user' => '22',
                                 'sandi' => '123456',
                                 'sandi_asli' => '123456',
                                 'aktif' => '1',
@@ -189,10 +197,13 @@ class Asesor extends MY_Controller {
                             $user_id = $this->db->insert_id();
 
                             $datay['user_id'] = $user_id;
-                            $datay['role_id'] = 16;
+                            $datay['role_id'] = 7;
                             $this->load->model('User_Role_Model');
                             $this->User_Role_Model->insert($datay);
                         }
+
+                        // smssend_zenziva();
+
                         echo json_encode(array('msgType' => 'success', 'msgValue' => 'Data berhasil disimpan !'));
                     } else {
                         echo json_encode(array('msgType' => 'error', 'msgValue' => 'Data tidak dapat disimpan !'));

@@ -737,33 +737,59 @@ function kirim_email_gmail($pesan,$to,$from,$subject,$lsp) {
 //     return $conn;
 // 	}
 
-	function smssend_zenziva($to='',$text='', $login = "") {
-		ini_set('allow_url_fopen',1);
-		$CI = & get_instance();
-		$admin = $CI->db->get('r_konfigurasi_aplikasi')->row();
-		$text = $admin->singkatan_unit . ', ' . $text;
-		// $userkey = 'ccb83240e8ab';
-		// $passkey = 'c01ade8f92871cf0854c1f37';
-		$userkey = '';
-		$passkey = '';
-		$url = 'https://console.zenziva.net/reguler/api/sendsms/';
+	// function smssend_zenziva($to='',$text='', $login = "") {
+	// 	ini_set('allow_url_fopen',1);
+	// 	$CI = & get_instance();
+	// 	$admin = $CI->db->get('r_konfigurasi_aplikasi')->row();
+	// 	$text = $admin->singkatan_unit . ', ' . $text;
+	// 	// $userkey = 'ccb83240e8ab';
+	// 	// $passkey = 'c01ade8f92871cf0854c1f37';
+	// 	$userkey = '5746e3b1ed7b';
+	// 	$passkey = '5320625b0dabb10c7b868f8c';
+	// 	$url = 'https://console.zenziva.net/waofficial/api/sendWAOfficial/';
+	// 	$curlHandle = curl_init();
+	// 	curl_setopt($curlHandle, CURLOPT_URL, $url);
+	// 	curl_setopt($curlHandle, CURLOPT_HEADER, 0);
+	// 	curl_setopt($curlHandle, CURLOPT_RETURNTRANSFER, 1);
+	// 	curl_setopt($curlHandle, CURLOPT_SSL_VERIFYHOST, 2);
+	// 	curl_setopt($curlHandle, CURLOPT_SSL_VERIFYPEER, 0);
+	// 	curl_setopt($curlHandle, CURLOPT_TIMEOUT,10);
+	// 	curl_setopt($curlHandle, CURLOPT_POST, 1);
+	// 	curl_setopt($curlHandle, CURLOPT_POSTFIELDS, array(
+	// 		'userkey' => $userkey,
+	// 		'passkey' => $passkey,
+	// 		'to' => $to,
+	// 		'message' => $text
+	// 	));
+	// 	$results = json_decode(curl_exec($curlHandle), true);
+	// 	curl_close($curlHandle);
+	// }
+
+	function smssend_zenziva() {
+		$userkey = '5746e3b1ed7b';
+		$passkey = '5320625b0dabb10c7b868f8c';
+		$telepon = '083897776778';
+		$my_brand = 'TeraBytee';
+		$otp_code = '888666';
+		$url = 'https://console.zenziva.net/waofficial/api/sendWAOfficial/';
 		$curlHandle = curl_init();
 		curl_setopt($curlHandle, CURLOPT_URL, $url);
 		curl_setopt($curlHandle, CURLOPT_HEADER, 0);
 		curl_setopt($curlHandle, CURLOPT_RETURNTRANSFER, 1);
 		curl_setopt($curlHandle, CURLOPT_SSL_VERIFYHOST, 2);
 		curl_setopt($curlHandle, CURLOPT_SSL_VERIFYPEER, 0);
-		curl_setopt($curlHandle, CURLOPT_TIMEOUT,10);
+		curl_setopt($curlHandle, CURLOPT_TIMEOUT,30);
 		curl_setopt($curlHandle, CURLOPT_POST, 1);
 		curl_setopt($curlHandle, CURLOPT_POSTFIELDS, array(
 			'userkey' => $userkey,
 			'passkey' => $passkey,
-			'to' => $to,
-			'message' => $text
+			'to' => $telepon,
+			'brand' => $my_brand,
+			'otp' => $otp_code
 		));
 		$results = json_decode(curl_exec($curlHandle), true);
 		curl_close($curlHandle);
-		}
+	}
 
 function dump($data){
         highlight_string("<?php\n\$data =\n" . var_export($data, true) . ";\n?>");
